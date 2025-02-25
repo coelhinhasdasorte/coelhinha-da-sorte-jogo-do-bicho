@@ -9,9 +9,11 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 50px auto;
             background: white;
             padding: 20px;
@@ -21,20 +23,32 @@
         h1 {
             color: #ff4500;
         }
-        .resultado, .palpite {
-            font-size: 1.5em;
-            margin: 20px 0;
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
-        button {
-            padding: 10px 20px;
-            background: #28a745;
+        .menu button {
+            padding: 10px 15px;
+            background: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        button:hover {
-            background: #218838;
+        .menu button:hover {
+            background: #0056b3;
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        select {
+            padding: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -43,24 +57,64 @@
         <h1>🐇 Coelhinha da Sorte 🐇</h1>
         <p>Palpites e Resultados do Jogo do Bicho</p>
         
-        <div class="palpite">🔮 Seu palpite: <span id="palpite"></span></div>
-        <button onclick="gerarPalpite()">Gerar Palpite</button>
+        <div class="menu">
+            <button onclick="showSection('resultados')">Resultados</button>
+            <button onclick="showSection('palpites')">Palpites</button>
+            <button onclick="showSection('app')">App</button>
+        </div>
         
-        <div class="resultado">📊 Último resultado: <span id="resultado"></span></div>
-        <button onclick="atualizarResultado()">Atualizar Resultado</button>
+        <div id="resultados" class="section">
+            <h2>Resultados</h2>
+            <p>Selecione a banca para ver os resultados do dia:</p>
+            <select id="bancaResultados" onchange="mostrarResultados()">
+                <option value="">Selecione uma banca</option>
+                <option value="banca1">Banca 1</option>
+                <option value="banca2">Banca 2</option>
+            </select>
+            <div id="resultadosLista"></div>
+        </div>
+        
+        <div id="palpites" class="section">
+            <h2>Palpites</h2>
+            <p>Selecione a banca para ver os palpites do dia:</p>
+            <select id="bancaPalpites" onchange="mostrarPalpites()">
+                <option value="">Selecione uma banca</option>
+                <option value="banca1">Banca 1</option>
+                <option value="banca2">Banca 2</option>
+            </select>
+            <div id="palpitesLista"></div>
+        </div>
+        
+        <div id="app" class="section">
+            <h2>App</h2>
+            <p>Em breve!</p>
+        </div>
     </div>
 
     <script>
-        function gerarPalpite() {
-            const bichos = ["Avestruz", "Águia", "Burro", "Borboleta", "Cachorro", "Cabra", "Carneiro", "Camelo", "Cobra", "Coelho", "Cavalo", "Elefante", "Galo", "Gato", "Jacaré", "Leão", "Macaco", "Porco", "Pavão", "Peru", "Touro", "Tigre", "Urso", "Veado", "Vaca"];
-            const numero = Math.floor(Math.random() * bichos.length);
-            document.getElementById("palpite").textContent = bichos[numero];
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
         }
 
-        function atualizarResultado() {
-            const resultados = ["3456 - Leão", "8923 - Águia", "1029 - Cobra", "7744 - Cavalo", "5632 - Elefante"];
-            const numero = Math.floor(Math.random() * resultados.length);
-            document.getElementById("resultado").textContent = resultados[numero];
+        function mostrarResultados() {
+            const banca = document.getElementById("bancaResultados").value;
+            const resultados = {
+                banca1: "09h - 1234 Touro | 12h - 5678 Águia | 18h - 9101 Leão",
+                banca2: "09h - 4321 Jacaré | 12h - 8765 Elefante | 18h - 1019 Cobra"
+            };
+            document.getElementById("resultadosLista").innerHTML = banca ? resultados[banca] || "Nenhum resultado encontrado" : "";
+        }
+
+        function mostrarPalpites() {
+            const banca = document.getElementById("bancaPalpites").value;
+            const palpites = {
+                banca1: "Palpite do dia: 1234 Touro | Acertos anteriores: 5678 Águia",
+                banca2: "Palpite do dia: 4321 Jacaré | Acertos anteriores: 8765 Elefante"
+            };
+            document.getElementById("palpitesLista").innerHTML = banca ? palpites[banca] || "Nenhum palpite encontrado" : "";
         }
     </script>
 </body>
