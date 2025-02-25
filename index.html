@@ -9,96 +9,100 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
             background-color: #f8f9fa;
         }
-        .sidebar {
-            width: 250px;
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
             background: #ff4500;
             color: white;
-            padding: 20px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
         }
-        .sidebar h2 {
-            text-align: center;
+        .header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
         }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
+        .header .description {
+            font-size: 18px;
         }
-        .sidebar ul li {
-            padding: 10px;
-            cursor: pointer;
-            border-bottom: 1px solid white;
-        }
-        .sidebar ul li:hover {
+        .menu {
+            display: flex;
+            justify-content: center;
             background: #e63900;
+            padding: 10px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .menu a:hover {
+            text-decoration: underline;
         }
         .content {
-            margin-left: 270px;
-            padding: 20px;
-            width: 100%;
             text-align: center;
-        }
-        .section {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        select {
-            padding: 10px;
-            margin-top: 10px;
-        }
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .app-highlight {
-            background-color: #ffcc00;
             padding: 20px;
-            border-radius: 10px;
+        }
+        .social-media {
             margin-top: 20px;
+        }
+        .social-media img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .table-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .table {
+            margin: 10px;
+            border-collapse: collapse;
+            background: white;
+        }
+        .table th, .table td {
+            border: 1px solid black;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>🐇 Coelhinha da Sorte</h2>
-        <ul>
-            <li onclick="showSection('inicio')">Início</li>
-            <li onclick="showSection('trajetoria')">Minha História</li>
-            <li onclick="showSection('resultados')">Resultados</li>
-            <li onclick="showSection('palpites')">Palpites</li>
-            <li onclick="showSection('app')">Aplicativo</li>
-        </ul>
+    <div class="header">
+        <img src="minha-foto.jpg" alt="Minha Foto">
+        <div class="description">
+            <p>Sou a Coelhinha da Sorte, tenho 27 aninhos e trabalho como palpiteira do Jogo do Bicho desde os 24 anos.</p>
+        </div>
     </div>
-    
+    <div class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#app">Aplicativo</a>
+        <a href="#resultados">Resultado e Palpites</a>
+    </div>
     <div class="content">
-        <div id="inicio" class="section active">
-            <h2>Bem-vindo ao Coelhinha da Sorte</h2>
-            <p>📺 Acompanhe nossos palpites, resultados e lives ao vivo:</p>
-            <p>🎥 <a href="https://www.youtube.com/@CoelhinhasdaSorte" target="_blank">YouTube</a></p>
-            <p>📷 <a href="https://www.instagram.com/CoelhinhasdaSorte" target="_blank">Instagram</a></p>
-            <p>🎥 <a href="https://www.kwai.com/@CoelhinhasdaSorte" target="_blank">Kwai</a></p>
-            <p>🎵 <a href="https://www.tiktok.com/@CoelhinhasdaSorte" target="_blank">TikTok</a></p>
+        <div class="social-media">
+            <p>📲 Acompanhe nossas redes sociais:</p>
+            <p>
+                <img src="youtube.png" alt="YouTube"> <a href="https://www.youtube.com/@CoelhinhasdaSorte" target="_blank">YouTube</a>
+            </p>
+            <p>
+                <img src="instagram.png" alt="Instagram"> <a href="https://www.instagram.com/CoelhinhasdaSorte" target="_blank">Instagram</a>
+            </p>
+            <p>
+                <img src="kwai.png" alt="Kwai"> <a href="https://www.kwai.com/@CoelhinhasdaSorte" target="_blank">Kwai</a>
+            </p>
+            <p>
+                <img src="tiktok.png" alt="TikTok"> <a href="https://www.tiktok.com/@CoelhinhasdaSorte" target="_blank">TikTok</a>
+            </p>
         </div>
-        
-        <div id="trajetoria" class="section">
-            <h2>Minha História no Jogo do Bicho</h2>
-            <img src="minha-foto.jpg" alt="Minha Foto" class="profile-image">
-            <p>Sou a Coelhinha da Sorte e há mais de 8 anos ajudo apostadores a encontrar os melhores palpites e resultados no Jogo do Bicho.</p>
-            <p>Minha trajetória começou com análises e estudos aprofundados sobre o jogo, criando métodos exclusivos para aumentar as chances de acerto.</p>
-        </div>
-
         <div id="resultados" class="section">
-            <h2>Resultados</h2>
-            <p>Selecione a banca para ver os resultados do dia:</p>
+            <h2>Resultados e Palpites</h2>
+            <p>Selecione a banca para ver os resultados e palpites:</p>
             <select>
                 <option>Selecione uma banca</option>
                 <option>LOTECE</option>
@@ -123,55 +127,41 @@
                 <option>PA</option>
                 <option>SE</option>
             </select>
-        </div>
-
-        <div id="palpites" class="section">
-            <h2>Palpites</h2>
-            <p>Selecione a banca para ver os palpites:</p>
-            <select>
-                <option>Selecione uma banca</option>
-                <option>LOTECE</option>
-                <option>LOTEP</option>
-                <option>PT-RIO</option>
-                <option>FEDERAL</option>
-                <option>RJ</option>
-                <option>SP</option>
-                <option>MG</option>
-                <option>BA</option>
-                <option>PE</option>
-                <option>PB</option>
-                <option>PR</option>
-                <option>SC</option>
-                <option>RS</option>
-                <option>DF</option>
-                <option>ES</option>
-                <option>MA</option>
-                <option>GO</option>
-                <option>CE</option>
-                <option>AM</option>
-                <option>PA</option>
-                <option>SE</option>
-            </select>
-        </div>
-        
-        <div id="app" class="section">
-            <h2>📱 Aplicativo Exclusivo</h2>
-            <div class="app-highlight">
-                <p>🔥 Jogue de qualquer lugar do Brasil! 🔥</p>
-                <p>Baixe o nosso aplicativo e faça suas apostas com segurança e a melhor cotação do mercado!</p>
-                <p>💰 Cotação de até <strong>R$8.000 na milhar!</strong></p>
-                <p>📲 Confiabilidade garantida!</p>
+            <div class="table-container">
+                <table class="table">
+                    <tr>
+                        <th>Resultados</th>
+                        <th>Animal</th>
+                    </tr>
+                    <tr>
+                        <td>Milhar: 1234</td>
+                        <td><img src="tigre.png" alt="Tigre"></td>
+                    </tr>
+                    <tr>
+                        <td>Grupo: 05</td>
+                        <td><img src="águia.png" alt="Águia"></td>
+                    </tr>
+                </table>
+                <table class="table">
+                    <tr>
+                        <th>Palpites</th>
+                        <th>Animal</th>
+                    </tr>
+                    <tr>
+                        <td>Milhar: 5678</td>
+                        <td><img src="cavalo.png" alt="Cavalo"></td>
+                    </tr>
+                    <tr>
+                        <td>Grupo: 12</td>
+                        <td><img src="elefante.png" alt="Elefante"></td>
+                    </tr>
+                </table>
             </div>
+            <h3>Acertos do Dia</h3>
+            <p>Milhar: 5678 ✅</p>
+            <p>Grupo: 12 ✅</p>
+            <p>Duque de Dezena: 12-34 ✅</p>
         </div>
     </div>
-
-    <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-        }
-    </script>
 </body>
 </html>
