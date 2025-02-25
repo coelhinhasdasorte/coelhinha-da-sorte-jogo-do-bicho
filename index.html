@@ -19,6 +19,7 @@
             padding: 20px;
             position: fixed;
             height: 100vh;
+            overflow-y: auto;
         }
         .sidebar h2 {
             text-align: center;
@@ -51,6 +52,19 @@
             padding: 10px;
             margin-top: 10px;
         }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .app-highlight {
+            background-color: #ffcc00;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +72,7 @@
         <h2>🐇 Coelhinha da Sorte</h2>
         <ul>
             <li onclick="showSection('inicio')">Início</li>
+            <li onclick="showSection('trajetoria')">Minha História</li>
             <li onclick="showSection('resultados')">Resultados</li>
             <li onclick="showSection('palpites')">Palpites</li>
             <li onclick="showSection('app')">Aplicativo</li>
@@ -67,48 +82,86 @@
     <div class="content">
         <div id="inicio" class="section active">
             <h2>Bem-vindo ao Coelhinha da Sorte</h2>
-            <p>Acompanhe nossos conteúdos:</p>
-            <p>📺 <a href="https://www.youtube.com/@CoelhinhasdaSorte" target="_blank">YouTube</a></p>
+            <p>📺 Acompanhe nossos palpites, resultados e lives ao vivo:</p>
+            <p>🎥 <a href="https://www.youtube.com/@CoelhinhasdaSorte" target="_blank">YouTube</a></p>
             <p>📷 <a href="https://www.instagram.com/CoelhinhasdaSorte" target="_blank">Instagram</a></p>
             <p>🎥 <a href="https://www.kwai.com/@CoelhinhasdaSorte" target="_blank">Kwai</a></p>
             <p>🎵 <a href="https://www.tiktok.com/@CoelhinhasdaSorte" target="_blank">TikTok</a></p>
         </div>
         
+        <div id="trajetoria" class="section">
+            <h2>Minha História no Jogo do Bicho</h2>
+            <img src="minha-foto.jpg" alt="Minha Foto" class="profile-image">
+            <p>Sou a Coelhinha da Sorte e há mais de 8 anos ajudo apostadores a encontrar os melhores palpites e resultados no Jogo do Bicho.</p>
+            <p>Minha trajetória começou com análises e estudos aprofundados sobre o jogo, criando métodos exclusivos para aumentar as chances de acerto.</p>
+        </div>
+
         <div id="resultados" class="section">
             <h2>Resultados</h2>
             <p>Selecione a banca para ver os resultados do dia:</p>
-            <select id="bancaResultados" onchange="mostrarResultados()">
-                <option value="">Selecione uma banca</option>
-                <option value="LOTECE">LOTECE</option>
-                <option value="LOTEP">LOTEP</option>
-                <option value="PT-RIO">PT-RIO</option>
-                <option value="FEDERAL">FEDERAL</option>
+            <select>
+                <option>Selecione uma banca</option>
+                <option>LOTECE</option>
+                <option>LOTEP</option>
+                <option>PT-RIO</option>
+                <option>FEDERAL</option>
+                <option>RJ</option>
+                <option>SP</option>
+                <option>MG</option>
+                <option>BA</option>
+                <option>PE</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>SC</option>
+                <option>RS</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>MA</option>
+                <option>GO</option>
+                <option>CE</option>
+                <option>AM</option>
+                <option>PA</option>
+                <option>SE</option>
             </select>
-            <div id="resultadosLista"></div>
         </div>
-        
+
         <div id="palpites" class="section">
             <h2>Palpites</h2>
-            <p>Selecione a banca para ver os palpites do dia:</p>
-            <select id="bancaPalpites" onchange="mostrarPalpites()">
-                <option value="">Selecione uma banca</option>
-                <option value="LOTECE">LOTECE</option>
-                <option value="LOTEP">LOTEP</option>
-                <option value="PT-RIO">PT-RIO</option>
-                <option value="FEDERAL">FEDERAL</option>
+            <p>Selecione a banca para ver os palpites:</p>
+            <select>
+                <option>Selecione uma banca</option>
+                <option>LOTECE</option>
+                <option>LOTEP</option>
+                <option>PT-RIO</option>
+                <option>FEDERAL</option>
+                <option>RJ</option>
+                <option>SP</option>
+                <option>MG</option>
+                <option>BA</option>
+                <option>PE</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>SC</option>
+                <option>RS</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>MA</option>
+                <option>GO</option>
+                <option>CE</option>
+                <option>AM</option>
+                <option>PA</option>
+                <option>SE</option>
             </select>
-            <div id="palpitesLista"></div>
         </div>
         
         <div id="app" class="section">
-            <h2>Jogue do seu celular! 📱</h2>
-            <p>Agora você pode jogar de qualquer lugar do Brasil! Nossa plataforma oferece:</p>
-            <ul>
-                <li>💰 Melhor cotação do mercado: R$ 8.000 na milhar</li>
-                <li>✅ Segurança e confiabilidade garantidas</li>
-                <li>📲 Apostas fáceis diretamente pelo celular</li>
-            </ul>
-            <p><strong>Baixe agora e comece a jogar!</strong></p>
+            <h2>📱 Aplicativo Exclusivo</h2>
+            <div class="app-highlight">
+                <p>🔥 Jogue de qualquer lugar do Brasil! 🔥</p>
+                <p>Baixe o nosso aplicativo e faça suas apostas com segurança e a melhor cotação do mercado!</p>
+                <p>💰 Cotação de até <strong>R$8.000 na milhar!</strong></p>
+                <p>📲 Confiabilidade garantida!</p>
+            </div>
         </div>
     </div>
 
@@ -118,28 +171,6 @@
                 section.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
-        }
-
-        function mostrarResultados() {
-            const banca = document.getElementById("bancaResultados").value;
-            const resultados = {
-                LOTECE: "09h - 1234 Touro | 12h - 5678 Águia | 18h - 9101 Leão",
-                LOTEP: "09h - 4321 Jacaré | 12h - 8765 Elefante | 18h - 1019 Cobra",
-                "PT-RIO": "09h - 6543 Veado | 12h - 3456 Leão | 18h - 7890 Tigre",
-                FEDERAL: "18h - 9876 Cavalo | 21h - 2345 Macaco"
-            };
-            document.getElementById("resultadosLista").innerHTML = banca ? resultados[banca] || "Nenhum resultado encontrado" : "";
-        }
-
-        function mostrarPalpites() {
-            const banca = document.getElementById("bancaPalpites").value;
-            const palpites = {
-                LOTECE: "Palpite do dia: 1234 Touro | Acertos anteriores: 5678 Águia",
-                LOTEP: "Palpite do dia: 4321 Jacaré | Acertos anteriores: 8765 Elefante",
-                "PT-RIO": "Palpite do dia: 6543 Veado | Acertos anteriores: 3456 Leão",
-                FEDERAL: "Palpite do dia: 9876 Cavalo | Acertos anteriores: 2345 Macaco"
-            };
-            document.getElementById("palpitesLista").innerHTML = banca ? palpites[banca] || "Nenhum palpite encontrado" : "";
         }
     </script>
 </body>
