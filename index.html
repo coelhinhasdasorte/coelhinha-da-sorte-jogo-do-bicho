@@ -7,38 +7,39 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #ff4500;
-        }
-        .menu {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            background-color: #f8f9fa;
         }
-        .menu button {
-            padding: 10px 15px;
-            background: #007bff;
+        .sidebar {
+            width: 250px;
+            background: #ff4500;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
         }
-        .menu button:hover {
-            background: #0056b3;
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid white;
+        }
+        .sidebar ul li:hover {
+            background: #e63900;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
         }
         .section {
             display: none;
@@ -53,14 +54,24 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🐇 Coelhinha da Sorte 🐇</h1>
-        <p>Palpites e Resultados do Jogo do Bicho</p>
-        
-        <div class="menu">
-            <button onclick="showSection('resultados')">Resultados</button>
-            <button onclick="showSection('palpites')">Palpites</button>
-            <button onclick="showSection('app')">App</button>
+    <div class="sidebar">
+        <h2>🐇 Coelhinha da Sorte</h2>
+        <ul>
+            <li onclick="showSection('inicio')">Início</li>
+            <li onclick="showSection('resultados')">Resultados</li>
+            <li onclick="showSection('palpites')">Palpites</li>
+            <li onclick="showSection('app')">Aplicativo</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <div id="inicio" class="section active">
+            <h2>Bem-vindo ao Coelhinha da Sorte</h2>
+            <p>Acompanhe nossos conteúdos:</p>
+            <p>📺 <a href="https://www.youtube.com/@CoelhinhasdaSorte" target="_blank">YouTube</a></p>
+            <p>📷 <a href="https://www.instagram.com/CoelhinhasdaSorte" target="_blank">Instagram</a></p>
+            <p>🎥 <a href="https://www.kwai.com/@CoelhinhasdaSorte" target="_blank">Kwai</a></p>
+            <p>🎵 <a href="https://www.tiktok.com/@CoelhinhasdaSorte" target="_blank">TikTok</a></p>
         </div>
         
         <div id="resultados" class="section">
@@ -68,8 +79,10 @@
             <p>Selecione a banca para ver os resultados do dia:</p>
             <select id="bancaResultados" onchange="mostrarResultados()">
                 <option value="">Selecione uma banca</option>
-                <option value="banca1">Banca 1</option>
-                <option value="banca2">Banca 2</option>
+                <option value="LOTECE">LOTECE</option>
+                <option value="LOTEP">LOTEP</option>
+                <option value="PT-RIO">PT-RIO</option>
+                <option value="FEDERAL">FEDERAL</option>
             </select>
             <div id="resultadosLista"></div>
         </div>
@@ -79,15 +92,23 @@
             <p>Selecione a banca para ver os palpites do dia:</p>
             <select id="bancaPalpites" onchange="mostrarPalpites()">
                 <option value="">Selecione uma banca</option>
-                <option value="banca1">Banca 1</option>
-                <option value="banca2">Banca 2</option>
+                <option value="LOTECE">LOTECE</option>
+                <option value="LOTEP">LOTEP</option>
+                <option value="PT-RIO">PT-RIO</option>
+                <option value="FEDERAL">FEDERAL</option>
             </select>
             <div id="palpitesLista"></div>
         </div>
         
         <div id="app" class="section">
-            <h2>App</h2>
-            <p>Em breve!</p>
+            <h2>Jogue do seu celular! 📱</h2>
+            <p>Agora você pode jogar de qualquer lugar do Brasil! Nossa plataforma oferece:</p>
+            <ul>
+                <li>💰 Melhor cotação do mercado: R$ 8.000 na milhar</li>
+                <li>✅ Segurança e confiabilidade garantidas</li>
+                <li>📲 Apostas fáceis diretamente pelo celular</li>
+            </ul>
+            <p><strong>Baixe agora e comece a jogar!</strong></p>
         </div>
     </div>
 
@@ -102,8 +123,10 @@
         function mostrarResultados() {
             const banca = document.getElementById("bancaResultados").value;
             const resultados = {
-                banca1: "09h - 1234 Touro | 12h - 5678 Águia | 18h - 9101 Leão",
-                banca2: "09h - 4321 Jacaré | 12h - 8765 Elefante | 18h - 1019 Cobra"
+                LOTECE: "09h - 1234 Touro | 12h - 5678 Águia | 18h - 9101 Leão",
+                LOTEP: "09h - 4321 Jacaré | 12h - 8765 Elefante | 18h - 1019 Cobra",
+                "PT-RIO": "09h - 6543 Veado | 12h - 3456 Leão | 18h - 7890 Tigre",
+                FEDERAL: "18h - 9876 Cavalo | 21h - 2345 Macaco"
             };
             document.getElementById("resultadosLista").innerHTML = banca ? resultados[banca] || "Nenhum resultado encontrado" : "";
         }
@@ -111,8 +134,10 @@
         function mostrarPalpites() {
             const banca = document.getElementById("bancaPalpites").value;
             const palpites = {
-                banca1: "Palpite do dia: 1234 Touro | Acertos anteriores: 5678 Águia",
-                banca2: "Palpite do dia: 4321 Jacaré | Acertos anteriores: 8765 Elefante"
+                LOTECE: "Palpite do dia: 1234 Touro | Acertos anteriores: 5678 Águia",
+                LOTEP: "Palpite do dia: 4321 Jacaré | Acertos anteriores: 8765 Elefante",
+                "PT-RIO": "Palpite do dia: 6543 Veado | Acertos anteriores: 3456 Leão",
+                FEDERAL: "Palpite do dia: 9876 Cavalo | Acertos anteriores: 2345 Macaco"
             };
             document.getElementById("palpitesLista").innerHTML = banca ? palpites[banca] || "Nenhum palpite encontrado" : "";
         }
