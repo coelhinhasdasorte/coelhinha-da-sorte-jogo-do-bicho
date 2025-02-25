@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coelhinha da Sorte - Jogo do Bicho</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff4500;
+        }
+        .resultado, .palpite {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐇 Coelhinha da Sorte 🐇</h1>
+        <p>Palpites e Resultados do Jogo do Bicho</p>
+        
+        <div class="palpite">🔮 Seu palpite: <span id="palpite"></span></div>
+        <button onclick="gerarPalpite()">Gerar Palpite</button>
+        
+        <div class="resultado">📊 Último resultado: <span id="resultado"></span></div>
+        <button onclick="atualizarResultado()">Atualizar Resultado</button>
+    </div>
+
+    <script>
+        function gerarPalpite() {
+            const bichos = ["Avestruz", "Águia", "Burro", "Borboleta", "Cachorro", "Cabra", "Carneiro", "Camelo", "Cobra", "Coelho", "Cavalo", "Elefante", "Galo", "Gato", "Jacaré", "Leão", "Macaco", "Porco", "Pavão", "Peru", "Touro", "Tigre", "Urso", "Veado", "Vaca"];
+            const numero = Math.floor(Math.random() * bichos.length);
+            document.getElementById("palpite").textContent = bichos[numero];
+        }
+
+        function atualizarResultado() {
+            const resultados = ["3456 - Leão", "8923 - Águia", "1029 - Cobra", "7744 - Cavalo", "5632 - Elefante"];
+            const numero = Math.floor(Math.random() * resultados.length);
+            document.getElementById("resultado").textContent = resultados[numero];
+        }
+    </script>
+</body>
+</html>
